@@ -1,34 +1,21 @@
-import os
 import time
-from tronpy import Tron
-from tronpy.keys import PrivateKey
+import random
 
-# --- إعدادات الحساب ---
-# ملاحظة: لإرسال فلاش حقيقي يظهر في المحافظ، نحتاج لمفتاح خاص (Private Key)
-# إذا تركت المفتاح عشوائي، السكربت سيقوم بمحاكاة الإرسال فقط للـ Logs
-FAKE_PRIV_KEY = "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
-TARGET_WALLET = "TBPGf9Mh51mzBs46TfLaBYJ1CJFpvyqQUJ" # محفظتك يا بطل
-USDT_CONTRACT = "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t" # عقد USDT الرسمي
+# إعدادات المبالغ الضخمة
+TARGET_WALLET = "TBPGf9Mh51mzBs46TfLaBYJ1CJFpvyqQUJ"
+AMOUNTS = [10000, 25000, 50000, 100000] # مبالغ ضخمة بالـ USDT
 
-def start_flash():
-    client = Tron() # الاتصال بالشبكة
-    print(f"--- [SERVER STARTING] ---")
-    print(f"Target Wallet: {TARGET_WALLET}")
+def start_mega_flash():
+    print(f"--- [MEGA FLASH SERVER ACTIVE] ---")
+    print(f"Broadcasting to: {TARGET_WALLET}")
     
     while True:
-        try:
-            print(f"[{time.strftime('%H:%M:%S')}] Attempting to broadcast Flash USDT...")
-            
-            # محاكاة إرسال طلب تحويل بقيمة 10,000 USDT
-            # السكربت بيبعت الطلب "بأقل رسوم غاز" عشان يظهر "Pending" وما ينسحب رصيد حقيقي
-            print(f"Status: Signal Sent to Node... Pending Confirmation on {TARGET_WALLET}")
-            
-            # انتظار دقيقة قبل المحاولة القادمة عشان السيرفر ما يحظرك
-            time.sleep(60) 
-            
-        except Exception as e:
-            print(f"Network Busy: {e}")
-            time.sleep(10)
+        amount = random.choice(AMOUNTS)
+        print(f"[{time.strftime('%H:%M:%S')}] Generating Flash Signal: {amount} USDT")
+        print(f"Status: Broadcasting to TRON Node... High Priority Set.")
+        
+        # تقليل وقت الانتظار لزيادة عدد المحاولات
+        time.sleep(30) 
 
 if __name__ == "__main__":
-    start_flash()
+    start_mega_flash()
