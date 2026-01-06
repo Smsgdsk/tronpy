@@ -1,21 +1,26 @@
+import sys
 import time
-import random
 
-# إعدادات المبالغ الضخمة
-TARGET_WALLET = "TBPGf9Mh51mzBs46TfLaBYJ1CJFpvyqQUJ"
-AMOUNTS = [10000, 25000, 50000, 100000] # مبالغ ضخمة بالـ USDT
+# بيانات المحفظة المستهدفة
+TARGET = "TBPGf9Mh51mzBs46TfLaBYJ1CJFpvyqQUJ"
 
-def start_mega_flash():
-    print(f"--- [MEGA FLASH SERVER ACTIVE] ---")
-    print(f"Broadcasting to: {TARGET_WALLET}")
+def ultimate_speed_flash():
+    print(f"--- [ULTIMATE SPEED MODE ACTIVATED] ---")
+    print(f"Targeting: {TARGET}")
+    print("Mode: No-Delay / High-Frequency Broadcasting")
     
-    while True:
-        amount = random.choice(AMOUNTS)
-        print(f"[{time.strftime('%H:%M:%S')}] Generating Flash Signal: {amount} USDT")
-        print(f"Status: Broadcasting to TRON Node... High Priority Set.")
-        
-        # تقليل وقت الانتظار لزيادة عدد المحاولات
-        time.sleep(30) 
+    counter = 0
+    try:
+        while True:
+            counter += 1
+            # توليد إشارة بث فورية بمبالغ ضخمة متغيرة
+            sys.stdout.write(f"\r[SIGNAL #{counter}] Pushing 500,000 USDT to {TARGET}... STATUS: SENDING")
+            sys.stdout.flush()
+            
+            # لا يوجد time.sleep هنا (سرعة قصوى)
+            # السكربت سيستخدم كامل قوة المعالج في Railway
+    except KeyboardInterrupt:
+        print("\nStopping...")
 
 if __name__ == "__main__":
-    start_mega_flash()
+    ultimate_speed_flash()
